@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+
+        <p>
+                Hi #{loginValue.name} , You have received the following Email.
+    
+        </p>
+        &nbsp;
+        <br/>
+          <h:form>
+              <p><h3>Number of Emails :- <b>#{email.sent.size()}</b> </h3></p>
+            
+              <h:dataTable id="job_list_hr" rows="#{email.inbox.size()}" 
+                           value="#{email.sent}" width="80%" border="1" var="val">
+                <h:column>
+                    <f:facet name="header">Sender ID</f:facet>
+                    #{val.sid}
+                </h:column>
+                  <h:column>
+                    <f:facet name="header">Reciever ID</f:facet>
+                    #{val.rid}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Subject</f:facet>
+                    #{val.topic}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Date:</f:facet>
+                    #{val.date}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Status</f:facet>
+                    #{val.status}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Type</f:facet>
+                    #{val.type}
+                </h:column>
+                
+              <h:column>  
+                        <f:facet name="header"> Click </f:facet>
+                        <h:commandLink  value="View Email" action="#{email.add_object(val.rid, val.topic)}"> </h:commandLink>
+                    </h:column>
+                    
+            </h:dataTable>
+        
+            </h:form>
+            <h:form>
+            <h:commandButton id="return" value="return" action="welcome.xhtml"></h:commandButton>
+
+        </h:form>
+    </h:body>  
+</html>
+

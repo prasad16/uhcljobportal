@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <p> 
+                Hi #{loginValue.name} , compose your new Email here...
+
+        </p>
+        &nbsp;
+        <br/>
+        <h:form>
+            <p>
+                Enter reciever ID
+            </p>
+            <h:inputText id="rid" value="#{email.rid}" required="true" requiredMessage="Reciever Id is required" title="Reciever ID"> </h:inputText>
+             <p>
+                Enter Topic
+            </p>
+            <h:inputText id="topic" value="#{email.topic}" title="Subject">  </h:inputText>
+ <p>
+                Enter Content
+            </p>
+            <h:inputTextarea id="content" value="#{email.content}" title="Content"></h:inputTextarea>
+            
+            
+            <h:commandButton id="send" value="send" action="#{email.compose(loginValue.id)}"></h:commandButton>
+            &nbsp;
+            <h:commandButton id="return" value="return" action="welcome.xhtml"></h:commandButton>
+
+        </h:form>
+    </h:body>
+</html>
+
